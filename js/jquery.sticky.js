@@ -2,14 +2,14 @@
 	$.fn.sticky = function(options) {
 
 		var opts = $.extend($.fn.sticky.defaults, options);
-
-		var setOffSetY = this.offset().top;
 		
-		var checkObj = function() {
+		var element = this;
+		var setOffSetY = this.offset().top;
+		function checkObj() {
 			if($(window).scrollTop() >= setOffSetY) {
-				this.addClass(opts.idName);
+				element.addClass(opts.idName);
 			} else {
-				this.removeClass(opts.idName);
+				element.removeClass(opts.idName);
 			}
 		}
 
@@ -33,13 +33,12 @@
 				setTimeout(checkAnchor, 500);
 				checkAnchor();
 			}
-		
-
 
 			function checkhref(hash) {
+				//alert("link");
 				var $target = hash;
 				var $setTrget = $target.offset().top;
-				$setTrget = $setTrget - _target.objH*2;
+				$setTrget = $setTrget - element.objH*2;
 				$(window).scrollTop($setTrget);
 			}
 			
@@ -54,7 +53,7 @@
 
 
 	$.fn.sticky.defaults = {
-		idName: "fixed",
+		idName: "fixed"
 		
 	}
 
